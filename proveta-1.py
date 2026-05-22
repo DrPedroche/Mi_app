@@ -354,3 +354,181 @@ df_LALIGA_select = df_LALIGA_select.rename(columns={'Pts': 'Ptos'})
 #print(df_resultados)
 
 st.subheader("Linea 356")
+
+df_resultados.columns = ['ID', 'Local', 'Goles L', 'Visitante','Goles V']
+
+# st.dataframe(
+#     # df_resultados,
+#     df_resultados.iloc[1:11, 1:5],
+#     hide_index=True,
+# )
+
+
+
+# df_subset = df_resultados.iloc[1:11, 1:5]
+
+# st.dataframe(
+#     df_subset,
+#     hide_index=True,
+#     column_config={col: "" for col in df_subset.columns}
+# )
+
+# Clasificacion jornada metodo Pedroche
+df_1 = dict_dataframes['r'+str(ranking_seleccionado)] 
+df_1.columns = ['Equipo']
+
+
+#hay que añadir escudo
+def get_image_base64(path):
+    if os.path.exists(path):
+        with open(path, "rb") as f:
+            data = base64.b64encode(f.read()).decode()
+        return f"data:image/png;base64,{data}"
+    return None
+
+# Supongamos que tu DF se llama df_clasificacion
+df_1['Escudo'] = df_1['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
+df_1['Club']=range(1,21)  #sale de 1 a 20
+
+
+df_gen_pedroche['Escudo']=df_gen_pedroche['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
+df_gen_pedroche['Club']=range(1,21)  #sale de 1 a 20
+
+
+
+
+
+#Tengo que cambiar la columna Equipo y poner los nombres como en los logos
+
+
+# Supongamos que tu dataframe se llama df
+dict_cambios = {
+    'FC Barcelona': 'Barcelona',
+    'Atlético de Madrid': 'Atlético',
+    'Athletic Club':'Athletic',
+    'Villarreal CF':'Villarreal',    
+    'Real Betis':'Betis',    
+    'RC Celta':'Celta',
+	 'Celta de Vigo':'Celta',
+	 'Real Valladolid':'Real Valladolid',
+    'Real Valladolid\xa0':'Real Valladolid',
+    'Rayo Vallecano':'Rayo',
+    'CA Osasuna':'Osasuna',
+    'RCD Mallorca':'Mallorca',
+    'Real Sociedad':'R. Sociedad',
+    'Valencia CF':'Valencia',
+    'Getafe CF':'Getafe',
+    'RCD Espanyol':'Espanyol',
+    'Espanyol\xa0':'Espanyol',
+    'Deportivo Alavés':'Alavés',
+    'Girona FC':'Girona',
+    'Sevilla FC':'Sevilla',
+    'CD Leganés':'Leganés',
+    'CD Leganés\xa0':'Leganés',
+    'UD Las Palmas': 'Las Palmas',
+    'Elche CF':'Elche CF',
+    'Elche CF\xa0':'Elche CF',
+    'Real Oviedo\xa0':'R. Oviedo',
+    'Levante\xa0':'Levante'
+}
+
+df_LALIGA_select['Equipo'] = df_LALIGA_select['Equipo'].replace(dict_cambios)
+df_LALIGA_select['Escudo']=df_LALIGA_select['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
+
+texto = df_LALIGA_select.loc[10, 'Equipo']  #Real Madrid
+#texto = df_LALIGA_select.loc[17, 'Equipo'] #'CD Leganés\xa0', 
+texto = df_LALIGA_select.loc[5, 'Equipo']  #'Real Valladolid\xa0'
+texto = df_LALIGA_select.loc[21, 'Equipo']  # 'Espanyol\xa0'
+print("Texto exacto:", repr(texto))
+print("Longitud:", len(texto))
+
+
+#Reordeno
+df_1=df_1[['Club','Escudo','Equipo']]
+df_1 = df_1.assign(Ptos=[25, 18, 15, 12, 10, 8, 6, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+df_gen_pedroche=df_gen_pedroche[['Club','Escudo','Equipo','Ptos']]
+df_LALIGA_select=df_LALIGA_select[['Posición','Escudo','Equipo','PJ','Ptos']]
+
+
+# Creamos dos columnas de igual tamaño
+#col1, col2 = st.columns(2)
+col1, col2 = st.columns([0.55, 0.45])
+
+# Columna de la izquierda
+with col1:
+    with st.container(border=True):
+        #st.write(f"Jornada {number}")
+        st.subheader(f"Encuentros jornada {number}")
+        #st.markdown("### Encuentros")
+        #st.dataframe(df_1)  # st.table es estática, st.dataframe tiene scroll
+        st.dataframe(
+            # df_resultados,
+            df_resultados.iloc[1:11, 1:5],
+            hide_index=True,
+            )
+
+# Columna de la derecha
+with col2:
+    with st.container(border=True):
+        st.markdown("### Clasificación jornada según el método")
+        st.dataframe(
+            df_1,
+            column_config={
+                "Escudo": st.column_config.ImageColumn("Escudo"),
+                "Club": ' '
+            },
+            hide_index=True
+        )
+
+
+
+#[25, 18, 15, 12, 10, 8, 6, 4, 2, 1]
+# left, right = st.columns(2, border=True)
+
+# left.markdown("El campeón de la jornada se lleva 25 puntos, los siguientes: 18, 15, 12, 10, 8, 6, 4, 2 y el décimo 1 punto. El resto de equipos no gana nada. ")
+# #middle.markdown("Lorem ipsum " * 5)
+# right.markdown("Acumulando los puntos podemos construir una clasificación general y compararla con la clasificación oficial")
+
+md = st.text_area('',"El campeón de la jornada se lleva 25 puntos, los siguientes: 18, 15, 12, 10, 8, 6, 4, 2 y el décimo 1 punto. "
+                  "El resto de equipos no anotan puntos."
+                  " Acumulando los puntos en cada jornada se puede construir una clasificación general" 
+                  "  que puede compararse con la clasificación oficial")
+
+# print(df_1)
+
+# Creamos dos columnas de igual tamaño
+#col1, col2 = st.columns(2)
+col1, col2 = st.columns([0.45, 0.55])
+
+# Columna de la izquierda
+with col1:
+    with st.container(border=True):
+        st.markdown("## Clasificación según el método")
+       
+        #st.dataframe(df_1)  # st.table es estática, st.dataframe tiene scroll
+        st.dataframe(
+            df_gen_pedroche,
+            column_config={
+                "Escudo": st.column_config.ImageColumn("Escudo"),
+                "Club": " " 
+            },
+            hide_index=True
+        )
+        
+
+# Columna de la derecha
+with col2:
+    with st.container(border=True):
+        #st.markdown("## Clasificación  <br> oficial")
+        st.markdown("## Clasificación <br> oficial", unsafe_allow_html=True)
+        st.dataframe(
+            df_LALIGA_select,
+            column_config={
+                "Escudo": st.column_config.ImageColumn("Escudo"),
+                "Posición": " "  # Cambia el nombre de la columna por un espacio
+            },
+            hide_index=True
+        )
+        
+        
+#**********************
