@@ -211,5 +211,110 @@ resultados_encuentros = cargar_partidos(NOMBRE_ARCHIVO_PARTIDOS, 'Jornada', 37) 
 #cargo clasificacion general pedroche
 rankings_gen_pedroche_carg = cargar_partidos(Nombre_archivo_General_Pedroche, 'J', 37) ################# 38 temporada completa
 
+#cargo partidos
+def cargar_laliga(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
+    """
+    Carga todas las hojas del archivo Excel como DataFrames y verifica la columna.
+
+    Args:
+        archivo_excel (str): Ruta al archivo Excel.
+        prefijo (str): Prefijo de los nombres de las hojas (ej. 'r').
+        num_hojas (int): Número total de hojas a cargar (ej. 39 para r0-r38).
+
+    Returns:
+        dict: Un diccionario donde las claves son los nombres de las hojas y los valores
+              son los DataFrames cargados, o None si hay un error.
+    """
+    todos_los_partidos = {}
+    
+    try:
+        # Usamos pd.ExcelFile para leer todas las hojas de manera eficiente
+        xls = pd.ExcelFile(archivo_excel)
+        nombres_hojas_disponibles = xls.sheet_names
+
+        for i in range(1,num_hojas+1):
+            nombre_hoja = f"{prefijo}{i}"
+            if nombre_hoja not in nombres_hojas_disponibles:
+                st.error(f"Error: La hoja '{nombre_hoja}' no se encontró en el archivo Excel.")
+                return None
+
+            # Cargar la hoja específica
+            df_temp = pd.read_excel(xls, sheet_name=nombre_hoja, header=None)
+            
+            # # Asumimos que la columna de equipos es la primera y no tiene nombre
+            # # Por lo tanto, pandas la nombra '0' si header=None
+            # columna_sin_nombre = 0
+
+            # # Si la columna 0 no existe, mostramos un error
+            # if columna_sin_nombre not in df_temp.columns:
+            #     st.error(f"Error: La columna sin nombre (posición 0) no se encontró en la hoja '{nombre_hoja}'.")
+            #     return None
+            
+            # # Extraer solo la columna de equipos y asegurarse de que sean 20 filas
+            # equipos_serie = df_temp[columna_sin_nombre].dropna().astype(str).reset_index(drop=True)
+
+            # if len(equipos_serie) != 20:
+            #      st.warning(f"Advertencia: La hoja '{nombre_hoja}' no contiene exactamente 20 equipos. Contiene {len(equipos_serie)}.")
+            
+            #df_partidos=df_temp
+            todos_los_partidos[nombre_hoja] =df_temp
+            # todos_los_partidos[nombre_hoja] = equipos_serie
+
+    except FileNotFoundError:
+        st.error(f"Error: El archivo '{archivo_excel}' no se encontró. Asegúrate de que está en la misma carpeta que tu script de Streamlit.")
+        return None
+    except Exception as e:
+        st.error(f"Ocurrió un error inesperado al cargar los rankings: {e}")
+        return None
+
+    return todos_los_partidos
+
+
+#cargo clasificacion general LALIGA
+rankings_gen_LALIGA = cargar_laliga(Nombre_archivo_GenLALIGA,'J', 37)  #NO los lee bien,,   38 jornada completa
+#lo que está corrompido es el fichero EXCEL!!!!!!!!
+
+
+# Si los datos no se pudieron cargar, detener la ejecución del resto de la aplicación
+if rankings_cargados is None:
+    st.stop()
+
+# --- Interfaz de usuario para selección de ranking ---
+# Crear una lista de opciones para el selectbox
+opciones_rankings = sorted(list(rankings_cargados.keys()))
+
+
+
+# if opciones_rankings:
+#     ranking_seleccionado = st.selectbox(
+#         "Elige una jornada: si pones r0 es la ultima del año pasado ",
+#         options=opciones_rankings,
+#         index=1 # Por defecto, selecciona el primer ranking de la lista
+#     )
+
+#     st.subheader(f"Resultados Jornada {ranking_seleccionado.replace('r', '')}")
+
+#     # Mostrar los equipos del ranking seleccionado
+#     equipos_mostrar = rankings_cargados[ranking_seleccionado]
+# else:
+#     st.warning("No se pudieron cargar rankings. Por favor, revisa tu archivo Excel y configuración.")
+
+
+ranking_seleccionado=number
+
+#intento pasar los rankings_cargados a dataframe
+dict_dataframes = {k: v.to_frame() for k, v in rankings_cargados.items()}
+
+
+
+#dict_dataframes['r0']  #jornada 0
+
+
+
+# # Definimos tus datos
+# df_1 = pd.DataFrame({'data1': [1, 2, 3, 4, 5]})
+# df_2 = pd.DataFrame({'data2': [20, 30, 40, 50, 60]})
+
+print(ranking_seleccionado)
 
 
