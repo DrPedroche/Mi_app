@@ -112,4 +112,6 @@ def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
         return None
 
     return todos_los_rankings
+# --- Cargar los datos al inicio de la aplicación ---
+rankings_cargados = cargar_rankings(NOMBRE_ARCHIVO_EXCEL, PREFIJO_HOJAS, NUM_HOJAS)
 
