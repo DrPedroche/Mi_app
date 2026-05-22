@@ -139,12 +139,10 @@ with st.sidebar:
     st.markdown(
         """
         ### 📰 Noticias sobre el método en prensa
-
         - 🔵 [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
         - 🔴 [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)
         - 🟡 [SER](https://cadenaser.com/comunitat-valenciana/2023/08/10/un-estudio-concluye-que-el-sistema-de-clasificacion-de-laliga-no-es-atractivo-y-perjudica-la-competitividad-entre-equipos-radio-valencia/)
         - 🟢 [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html)
-
 		### 📘 Publicación científica
 	 	- 📄 [Pedroche, F. (2025). *A New Proposal for Team Ranking…*](https://doi.org/10.1007/978-3-032-00567-0_3)
         """,
