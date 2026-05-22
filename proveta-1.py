@@ -134,25 +134,16 @@ with st.sidebar:
 
 
 
-with st.sidebar:
-    st.markdown(
-        """
-        ### Noticias sobre el método en prensa
-        - [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)
-        - [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html) 
-        - [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
-        """,
-        unsafe_allow_html=True
-    )
+
 with st.sidebar:
     st.markdown(
         """
         ### 📰 Noticias sobre el método en prensa
 
-        - 🔵 [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)
-        - 🔴 [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html)
-        - 🟡 [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
-        - 🟢 [SER](https://cadenaser.com/comunitat-valenciana/2023/08/10/un-estudio-concluye-que-el-sistema-de-clasificacion-de-laliga-no-es-atractivo-y-perjudica-la-competitividad-entre-equipos-radio-valencia/)
+        - 🔵 [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
+        - 🔴 [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)
+        - 🟡 [SER](https://cadenaser.com/comunitat-valenciana/2023/08/10/un-estudio-concluye-que-el-sistema-de-clasificacion-de-laliga-no-es-atractivo-y-perjudica-la-competitividad-entre-equipos-radio-valencia/)
+        - 🟢 [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html)
         """,
         unsafe_allow_html=True
     )
