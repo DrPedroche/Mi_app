@@ -131,6 +131,9 @@ number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value
 
 with st.sidebar:
     parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada),  #con esa parvariable puedo hacer algo en el futuro
+
+
+with st.sidebar:
 	st.markdown("Prensa [Antena 3](https://google.com)", unsafe_allow_html=True)
 	
 
