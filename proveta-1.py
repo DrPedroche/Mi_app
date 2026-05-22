@@ -33,6 +33,7 @@ st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
 
 st.subheader(f"Temporada {temporada_elegida}")
+st.subheader("Pongo ficheros")
 
 if temporada_elegida=='2024-25':
 #     st.subheader("Has elegido la Temporada pasada")    
