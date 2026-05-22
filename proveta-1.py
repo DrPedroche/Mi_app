@@ -116,7 +116,7 @@ def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 rankings_cargados = cargar_rankings(NOMBRE_ARCHIVO_EXCEL, PREFIJO_HOJAS, NUM_HOJAS)
 
 print('Hola')
-Print('rankings meus carregats')
+print('rankings meus carregats')
 
 # Cargamos las variables que usaremos como opcion seleccionable
 opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como en r0
