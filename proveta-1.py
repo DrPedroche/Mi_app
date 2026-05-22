@@ -134,7 +134,7 @@ with st.sidebar:
 
 
 with st.sidebar:
-	st.markdown("Prensa [Antena 3](https://google.com)", unsafe_allow_html=True)
+	st.markdown("Notocias sobre el método Prensa [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)", unsafe_allow_html=True)
 	
 
 
