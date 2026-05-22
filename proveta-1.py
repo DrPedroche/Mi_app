@@ -142,7 +142,7 @@ with st.sidebar:
         ### Noticias sobre el método en prensa
         - [Antena 3](https://www.antena3.com/noticias/deportes/futbol/revolucionario-metodo-matematico-puntuar-liga-estilo-formula-1_2024081266ba2e284d41750001187df6.html)
         - [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html) 
-        - [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html?ref=https%3A%2F%2Fwww.abc.es%2Fespana%2Fcomunidad-valenciana%2Ftanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
+        - [ABC](https://www.abc.es/espana/comunidad-valenciana/tanda-penaltis-elegir-campo-copiar-formula-sistema-20230810113333-nt.html)
         """,
         unsafe_allow_html=True
     )
