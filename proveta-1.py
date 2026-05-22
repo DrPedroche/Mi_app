@@ -316,5 +316,40 @@ dict_dataframes = {k: v.to_frame() for k, v in rankings_cargados.items()}
 # df_2 = pd.DataFrame({'data2': [20, 30, 40, 50, 60]})
 
 print(ranking_seleccionado)
+entrada = ranking_seleccionado  #ejemplo r15
+#numero = entrada[1:]  # Extrae todo después del primer carácter ('15')
+numero = entrada  # 
+if numero=='0':         #si se elije 'r0'
+    jornada_resultado = "Jornada1"   
+    jornada_cgeneral="J1"
+    jornada_cLALIGA="J1"
+else:
+    jornada_resultado = f"Jornada{numero}"    
+    jornada_cgeneral= f"J{numero}"
+    #jornada_cLALIGA=f"Jornada {numero}"
+    jornada_cLALIGA = f"J{numero}"
 
+#print(jornada_resultado)  # Salida: Jornada15
+print(jornada_cgeneral)  # Salida: J1
+print(jornada_cLALIGA) #Salida Jornada 1
+
+df_resultados = resultados_encuentros[jornada_resultado] 
+
+df_gen_pedroche = rankings_gen_pedroche_carg[jornada_cgeneral] 
+
+df_gen_pedroche.columns=['Equipo','Ptos']
+
+
+df_LALIGA=rankings_gen_LALIGA[jornada_cLALIGA]
+
+#rankings_gen_LALIGA['J10'] #
+#df_LALIGA.iloc[2:,:]
+
+
+df_LALIGA_select=df_LALIGA.iloc[2:,:]
+df_LALIGA_select.columns=['Posición','Logo','Equipo','PJ','Win','Draw','Lost','Goals','DG','Ptos']
+df_LALIGA_select['Posición']=range(1,21)
+df_LALIGA_select.info()
+df_LALIGA_select = df_LALIGA_select.rename(columns={'Pts': 'Ptos'})
+#print(df_resultados)
 
