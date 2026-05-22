@@ -33,3 +33,18 @@ st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
 
 st.subheader(f"Temporada {temporada_elegida}")
+
+if temporada_elegida=='2024-25':
+#     st.subheader("Has elegido la Temporada pasada")    
+# Nombre del archivo Excel
+    NOMBRE_ARCHIVO_EXCEL = "ranking-old-24-25.xlsx"
+    NOMBRE_ARCHIVO_PARTIDOS = "LFP-24-25.xlsx"
+    Nombre_archivo_General_Pedroche="CGeneral24-25.xlsx"
+    Nombre_archivo_GenLALIGA="Laliga24-25-transfmkt.xlsx"
+
+else:
+#     st.subheader("Has elegido la Temporada actual")      
+    NOMBRE_ARCHIVO_EXCEL = "ranking-old-25-26.xlsx"
+    NOMBRE_ARCHIVO_PARTIDOS = "LFP-25-26.xlsx"
+    Nombre_archivo_General_Pedroche="CGeneral25-26.xlsx"
+    Nombre_archivo_GenLALIGA="Laliga25-26-transfmkt.xlsx"
