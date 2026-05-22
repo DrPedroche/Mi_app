@@ -33,7 +33,7 @@ st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
 
 st.subheader(f"Temporada {temporada_elegida}")
-st.subheader("Pongo ficheros")
+#st.subheader("Pongo ficheros")
 
 if temporada_elegida=='2024-25':
 #     st.subheader("Has elegido la Temporada pasada")    
@@ -353,7 +353,7 @@ df_LALIGA_select.info()
 df_LALIGA_select = df_LALIGA_select.rename(columns={'Pts': 'Ptos'})
 #print(df_resultados)
 
-st.subheader("Linea 356")
+#st.subheader("Linea 356")
 
 df_resultados.columns = ['ID', 'Local', 'Goles L', 'Visitante','Goles V']
 
