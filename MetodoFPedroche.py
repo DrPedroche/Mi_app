@@ -32,8 +32,7 @@ with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Ha
 				 "en la jornada anterior. A continuación, en la clasificación vienen los equipos que hayan empatado,"
 				 "ordenados según el número de goles en el encuentro. Por último, vienen los  equipos que han perdido,"
 				 "también ordenados según el número de goles del encuentro. En caso de empate en el orden, se mira"
-				 "a la clasificación de la jornada anterior y se prioriza al equipo con mejor orden".
-				)
+				 "a la clasificación de la jornada anterior y se prioriza al equipo con mejor orden.")
 
 
 st.sidebar.title('Selecciona Temporada')
