@@ -1,3 +1,3 @@
 # Mi_app
-Clasificación alternativa a la liga de Fútbol de 1ª división masculina. Método de F. Pedroche. IMM. UPV.
+Clasificación alternativa a la liga de Fútbol de 1ª división masculina. Resultados del Método de F. Pedroche. IMM. UPV.
 (Temporadas 24-25 y 25-26)
