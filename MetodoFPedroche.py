@@ -8,7 +8,7 @@ import os
 #
 st.set_page_config(layout="centered", page_icon=':soccer:', page_title="Ranking F.Pedroche",initial_sidebar_state="expanded")
 st.title("Clasificación alternativa a la liga de Fútbol de 1ª división masculina")
-st.markdown("### Método de F. Pedroche. IMM. <br> Universitat Politècnica de València", unsafe_allow_html=True)
+st.markdown("### F. Pedroche. IMM. <br> Universitat Politècnica de València", unsafe_allow_html=True)
 
 
 with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Haz click para saber más del método"):
