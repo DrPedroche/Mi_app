@@ -416,6 +416,13 @@ with col2:
 st.subheader(f"Posiciones del {parVariable} según el método") 
 st.image(f"escudos/{parVariable}.png", caption="")
 
+col1, col2 = st.columns([2,1])
+
+with col1:
+    st.write(f"Posiciones del {parVariable} según el método")
+
+with col2:
+    st.image(f"escudos/{parVariable}.png", width=120)
 
         
 #**********************
