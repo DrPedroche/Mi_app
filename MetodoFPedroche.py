@@ -453,8 +453,8 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(12, 6))
 
 # 2. Dibujar usando 'ax' en lugar de 'plt' (recomendado en Streamlit)
-ax.scatter(sheet_names, real_madrid_positions, marker='o', s=100)
-ax.plot(sheet_names, real_madrid_positions, linestyle='--', color='gray', alpha=0.7)
+ax.scatter(sheet_names, rm_positions, marker='o', s=100)
+ax.plot(sheet_names, rm_positions, linestyle='--', color='gray', alpha=0.7)
 
 # --- EJE X: Etiquetas del 1 al 38 ---
 ax.set_xticks(range(len(sheet_names)))
