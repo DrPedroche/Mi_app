@@ -477,5 +477,123 @@ ax.grid(True, linestyle='--', alpha=0.6)
 
 plt.tight_layout()
 
+#PALMARES
+Palmares = df_1[['Equipo']].copy()
+print(Palmares.head())
+
+# Initialize a dictionary to store counts of 'Posición' 1 for each team
+primero_counts = {team: 0 for team in Palmares['Equipo'].unique()}
+
+# Loop through sheets 'r1' to 'r38' to count 'Posición' 1 occurrences
+for i in range(1, 39):
+    sheet_name = f'r{i}'
+    try:
+        temp_df = pd.read_excel(file_in, sheet_name=sheet_name, header=None)
+        temp_df.rename(columns={0: 'Equipo'}, inplace=True)
+        temp_df['Posición'] = range(1, len(temp_df) + 1)
+
+        # Find team(s) with Posición 1
+        top_team_row = temp_df[temp_df['Posición'] == 1]
+        if not top_team_row.empty:
+            top_team = top_team_row['Equipo'].iloc[0]
+            if top_team in primero_counts:
+                primero_counts[top_team] += 1
+
+    except Exception as e:
+        print(f"Error processing sheet {sheet_name}: {e}")
+
+# Add the 'Primero' column to the Palmares DataFrame
+Palmares['Primero'] = Palmares['Equipo'].map(primero_counts).fillna(0).astype(int)
+#print(Palmares.head())
+        
+# Initialize a dictionary to store counts of 'Posición' 2 for each team
+segundo_counts = {team: 0 for team in Palmares['Equipo'].unique()}
+
+# Loop through sheets 'r1' to 'r38' to count 'Posición' 2 occurrences
+for i in range(1, 39):
+    sheet_name = f'r{i}'
+    try:
+        temp_df = pd.read_excel(file_in, sheet_name=sheet_name, header=None)
+        temp_df.rename(columns={0: 'Equipo'}, inplace=True)
+        temp_df['Posición'] = range(1, len(temp_df) + 1)
+
+        # Find team(s) with Posición 2
+        second_team_row = temp_df[temp_df['Posición'] == 2]
+        if not second_team_row.empty:
+            second_team = second_team_row['Equipo'].iloc[0]
+            if second_team in segundo_counts:
+                segundo_counts[second_team] += 1
+
+    except Exception as e:
+        print(f"Error processing sheet {sheet_name}: {e}")
+
+# Add the 'Segundo' column to the Palmares DataFrame
+Palmares['Segundo'] = Palmares['Equipo'].map(segundo_counts).fillna(0).astype(int)
+#print(Palmares.head())        
+        
+# Initialize a dictionary to store counts of 'Posición' 3 for each team
+tercero_counts = {team: 0 for team in Palmares['Equipo'].unique()}
+
+# Loop through sheets 'r1' to 'r38' to count 'Posición' 3 occurrences
+for i in range(1, 39):
+    sheet_name = f'r{i}'
+    try:
+        temp_df = pd.read_excel(file_in, sheet_name=sheet_name, header=None)
+        temp_df.rename(columns={0: 'Equipo'}, inplace=True)
+        temp_df['Posición'] = range(1, len(temp_df) + 1)
+        
+
+        # Find team(s) with Posición 3
+        third_team_row = temp_df[temp_df['Posición'] == 3]
+        if not third_team_row.empty:
+            third_team = third_team_row['Equipo'].iloc[0]
+            if third_team in tercero_counts:
+                tercero_counts[third_team] += 1
+
+    except Exception as e:
+        print(f"Error processing sheet {sheet_name}: {e}")
+
+# Add the 'Tercero' column to the Palmares DataFrame
+Palmares['Tercero'] = Palmares['Equipo'].map(tercero_counts).fillna(0).astype(int)
+print(Palmares.head())        
+        
+# # Ordenar el DataFrame (ascending=False para que sea decreciente)
+# Palmares_ordenado = Palmares.sort_values(by='Primero', ascending=False)
+
+# # La forma correcta de desempaquetar una sola columna
+# colu = st.columns(1)
+
+# # Usamos colu[0] porque st.columns siempre devuelve una lista
+# with colu[0]:
+#     with st.container(border=True):        
+#         st.subheader("Palmarés: veces que cada equipo ha sido 1º, 2º o 3º en la clasificación parcial de cada jornada")
+#         st.dataframe(
+#             Palmares_ordenado,
+#             hide_index=True,
+#             use_container_width=True # Opcional: para que ocupe todo el ancho
+#         )
+        
+        
+# 1. Creamos 3 columnas. La central (2) es el doble de ancha que las laterales (1)
+# Esto centra el contenido y evita que sea 'wide'
+
+st.text_area('',"Palmarés: número de veces que cada equipo ha sido 1º, 2º o 3º en la clasificación parcial de cada jornada según el método")
+
+
+col_izq, col_centro, col_der = st.columns([1, 2, 1])
+
+# 2. Ordenar el DataFrame (como vimos antes)
+Palmares_ordenado = Palmares.sort_values(by='Primero', ascending=False)
+
+# Usamos solo la columna del centro
+with col_centro:
+    with st.container(border=True):        
+        st.subheader("Palmarés")
+        st.dataframe(
+            Palmares_ordenado,
+            hide_index=True,
+            use_container_width=True # Ocupa el ancho de la columna central, no de la pantalla
+        )   
+
 # 3. Mostrar el gráfico en la app de Streamlit
 st.pyplot(fig)
