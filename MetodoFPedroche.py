@@ -5,23 +5,11 @@ import base64
 import os
 
 
-# --- Configuración de la aplicación Streamlit ---
+#
 st.set_page_config(layout="centered", page_icon=':soccer:', page_title="Ranking F.Pedroche",initial_sidebar_state="expanded")
-# st.set_page_config(layout="wide", page_title="Ranking de Equipos",initial_sidebar_state="expanded",
-#                    menu_items={
-#         'Get Help': 'https://www.extremelycoolapp.com/help',
-#         'Report a bug': "https://www.extremelycoolapp.com/bug",
-#         'About': "# This is a header. This is an *extremely* cool app!"
-#                               }
-#                    )
-
-
-
-
 st.title("Clasificación alternativa a la liga de Fútbol de 1ª división masculina")
-#st.subheader("Método de F. Pedroche. IMM.  Universitat Politècnica de València")
 st.markdown("### Método de F. Pedroche. IMM. <br> Universitat Politècnica de València", unsafe_allow_html=True)
-#st.write("Selecciona una jornada.")
+
 
 with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Haz click para saber más del método"):
         st.write("El método de clasificación se basa en primar los goles en los partidos, favoreciendo las goleadas. "
@@ -62,25 +50,14 @@ PREFIJO_HOJAS = "r"
 NUM_HOJAS = 39 #39 jornada completa
 
 
-# --- Función para cargar los datos (con caché para optimizar el rendimiento) ---
+
 @st.cache_data
 def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
-    """
-    Carga todas las hojas del archivo Excel como DataFrames y verifica la columna.
 
-    Args:
-        archivo_excel (str): Ruta al archivo Excel.
-        prefijo (str): Prefijo de los nombres de las hojas (ej. 'r').
-        num_hojas (int): Número total de hojas a cargar (ej. 39 para r0-r38).
-
-    Returns:
-        dict: Un diccionario donde las claves son los nombres de las hojas y los valores
-              son los DataFrames cargados, o None si hay un error.
-    """
     todos_los_rankings = {}
     
     try:
-        # Usamos pd.ExcelFile para leer todas las hojas de manera eficiente
+        # 
         xls = pd.ExcelFile(archivo_excel)
         nombres_hojas_disponibles = xls.sheet_names
 
@@ -90,19 +67,16 @@ def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
                 st.error(f"Error: La hoja '{nombre_hoja}' no se encontró en el archivo Excel.")
                 return None
 
-            # Cargar la hoja específica
-            df_temp = pd.read_excel(xls, sheet_name=nombre_hoja, header=None)
-            
-            # Asumimos que la columna de equipos es la primera y no tiene nombre
-            # Por lo tanto, pandas la nombra '0' si header=None
+            #
+            df_temp = pd.read_excel(xls, sheet_name=nombre_hoja, header=None)            
             columna_sin_nombre = 0
 
-            # Si la columna 0 no existe, mostramos un error
+            # 
             if columna_sin_nombre not in df_temp.columns:
                 st.error(f"Error: La columna sin nombre (posición 0) no se encontró en la hoja '{nombre_hoja}'.")
                 return None
             
-            # Extraer solo la columna de equipos y asegurarse de que sean 20 filas
+            #
             equipos_serie = df_temp[columna_sin_nombre].dropna().astype(str).reset_index(drop=True)
 
             if len(equipos_serie) != 20:
@@ -118,18 +92,12 @@ def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
         return None
 
     return todos_los_rankings
-# --- Cargar los datos al inicio de la aplicación ---
+#
 rankings_cargados = cargar_rankings(NOMBRE_ARCHIVO_EXCEL, PREFIJO_HOJAS, NUM_HOJAS)
 
-
-
-# Cargamos las variables que usaremos como opcion seleccionable
+# 
 opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como en r0
 opciones_ordenada = opciones.sort_values() #los pongo en orden alfabetico
-
-
-       
-
 
 number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value=38, value="min", step=1,)
 #st.write("The current number is ", number)
