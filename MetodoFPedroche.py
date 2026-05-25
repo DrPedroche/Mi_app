@@ -110,7 +110,7 @@ with st.sidebar:
 #st.subheader(f"{parVariable}") 
 #st.image(f"escudos/{parVariable}.png", caption="Escudo")
 
-st.markdown(f"Clasificaciones del {parVariable}: ![Escudo](escudos/{parvariable}.png)")
+st.markdown(f"Clasificaciones del {parVariable}: ![Escudo](escudos/{parVariable}.png)")
 
 
 
