@@ -1,2 +1,3 @@
 # Mi_app
-Prueba de app con streamlit muestra los rankings con mi metodo en LFP 24-25 y LFP 25-26
+Clasificación alternativa a la liga de Fútbol de 1ª división masculina. Método de F. Pedroche. IMM. UPV.
+(Temporadas 24-25 y 25-26)
