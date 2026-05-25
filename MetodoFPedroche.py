@@ -107,8 +107,18 @@ opciones_ordenada = opciones.sort_values() #los pongo en orden alfabetico
 with st.sidebar:
     parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
 
-st.subheader(f"{parVariable}") 
-st.image(f"escudos/{parVariable}.png", caption="Escudo")
+#st.subheader(f"{parVariable}") 
+#st.image(f"escudos/{parVariable}.png", caption="Escudo")
+
+col1, col2 = st.columns([2,1])
+
+with col1:
+    st.write(f"Clasificaciones del {parVariable}")
+
+with col2:
+    st.image(f"escudos/{parvariable}.png")
+
+
 
 number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value=38, value="min", step=1,)
 #st.write("The current number is ", number)
