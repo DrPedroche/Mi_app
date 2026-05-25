@@ -474,6 +474,9 @@ plt.setp(ax.get_xticklabels(), rotation=90)
 ax.grid(True, linestyle='--', alpha=0.6)
 #ax.invert_yaxis()  # Invertir el eje Y (el 1 arriba)
 
+#Rotulo EQUIPO A ANALIZAR
+st.subheader(f"Posiciones del {parVariable} según el método") 
+st.image(f"escudos/{parVariable}.png", caption="",width=90)
 plt.tight_layout()
 
 #PALMARES
@@ -556,25 +559,6 @@ for i in range(1, 39):
 Palmares['Tercero'] = Palmares['Equipo'].map(tercero_counts).fillna(0).astype(int)
 print(Palmares.head())        
         
-# # Ordenar el DataFrame (ascending=False para que sea decreciente)
-# Palmares_ordenado = Palmares.sort_values(by='Primero', ascending=False)
-
-# # La forma correcta de desempaquetar una sola columna
-# colu = st.columns(1)
-
-# # Usamos colu[0] porque st.columns siempre devuelve una lista
-# with colu[0]:
-#     with st.container(border=True):        
-#         st.subheader("Palmarés: veces que cada equipo ha sido 1º, 2º o 3º en la clasificación parcial de cada jornada")
-#         st.dataframe(
-#             Palmares_ordenado,
-#             hide_index=True,
-#             use_container_width=True # Opcional: para que ocupe todo el ancho
-#         )
-        
-        
-# 1. Creamos 3 columnas. La central (2) es el doble de ancha que las laterales (1)
-# Esto centra el contenido y evita que sea 'wide'
 
 st.text_area('',"Palmarés: número de veces que cada equipo ha sido 1º, 2º o 3º en la clasificación parcial de cada jornada según el método")
 
@@ -597,6 +581,3 @@ with col_centro:
 # 3. Mostrar el gráfico en la app de Streamlit
 st.pyplot(fig)
 
-#Rotulo EQUIPO A ANALIZAR
-st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="",width=90)
