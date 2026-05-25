@@ -49,7 +49,7 @@ with st.sidebar:
     parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
 
 st.subheader(f"{parVariable}") 
-st.markdown(![Escudo](f"escudos/{parvariable}.png")
+st.image(f"escudos/{parVariable}.png", caption="Escudo")
 
 
 
