@@ -414,7 +414,7 @@ with col2:
 ###### Analisi de un equipo
 
 st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="")
+st.image(f"escudos/{parVariable}.png", caption="",width=80)
 
 col1, col2 = st.columns([2,1])
 
