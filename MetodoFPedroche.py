@@ -426,3 +426,34 @@ with col2:
 
         
 #**********************
+
+#Initialize lists to store data for plotting
+sheet_names = []
+rm_positions = []
+
+# Loop through sheets 'r1' to 'r38'
+for i in range(1, 39):
+    sheet_name = f'r{i}'
+    try:
+        # Read the sheet without header
+        temp_df = pd.read_excel(file_in, sheet_name=sheet_name, header=None)
+        # Rename the first column to 'Equipo'
+        temp_df.rename(columns={0: 'Equipo'}, inplace=True)
+        # Add 'Posición' column
+        temp_df['Posición'] = range(1, len(temp_df) + 1)
+
+        # Filter 
+        rm_row = temp_df[temp_df['Equipo'] == parVariable]
+
+        if not rm_row.empty:
+            # Get the position and store it
+            sheet_names.append(sheet_name)
+            rm_positions.append(rm_row['Posición'].iloc[0])
+        else:
+            print(f"{parVariable} not found in sheet: {sheet_name}")
+
+    except Exception as e:
+        print(f"Error reading sheet {sheet_name}: {e}")
+
+# Create the scatter plot
+import matplotlib.pyplot as plt
