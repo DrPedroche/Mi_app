@@ -44,6 +44,15 @@ else:
     Nombre_archivo_General_Pedroche="CGeneral25-26.xlsx"
     Nombre_archivo_GenLALIGA="Laliga25-26-transfmkt.xlsx"
 
+
+with st.sidebar:
+    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
+
+st.subheader(f"{parVariable}") 
+st.markdown(![Escudo](f"escudos/{parvariable}.png")
+
+
+
 # Prefijo de las hojas (ej. 'r0', 'r1', ...)
 PREFIJO_HOJAS = "r"
 # Número de hojas de ranking (de r0 a r38 son 39 hojas) #toda la liga hay que poner 39
@@ -253,21 +262,6 @@ df_LALIGA_select = df_LALIGA_select.rename(columns={'Pts': 'Ptos'})
 
 df_resultados.columns = ['ID', 'Local', 'Goles L', 'Visitante','Goles V']
 
-# st.dataframe(
-#     # df_resultados,
-#     df_resultados.iloc[1:11, 1:5],
-#     hide_index=True,
-# )
-
-
-
-# df_subset = df_resultados.iloc[1:11, 1:5]
-
-# st.dataframe(
-#     df_subset,
-#     hide_index=True,
-#     column_config={col: "" for col in df_subset.columns}
-# )
 
 # Clasificacion jornada metodo Pedroche
 df_1 = dict_dataframes['r'+str(ranking_seleccionado)] 
