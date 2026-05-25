@@ -45,11 +45,6 @@ else:
     Nombre_archivo_GenLALIGA="Laliga25-26-transfmkt.xlsx"
 
 
-with st.sidebar:
-    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
-
-st.subheader(f"{parVariable}") 
-st.image(f"escudos/{parVariable}.png", caption="Escudo")
 
 
 
@@ -107,6 +102,13 @@ rankings_cargados = cargar_rankings(NOMBRE_ARCHIVO_EXCEL, PREFIJO_HOJAS, NUM_HOJ
 # 
 opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como en r0
 opciones_ordenada = opciones.sort_values() #los pongo en orden alfabetico
+
+
+with st.sidebar:
+    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
+
+st.subheader(f"{parVariable}") 
+st.image(f"escudos/{parVariable}.png", caption="Escudo")
 
 number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value=38, value="min", step=1,)
 #st.write("The current number is ", number)
