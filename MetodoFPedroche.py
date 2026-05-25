@@ -53,7 +53,7 @@ else:
 # Prefijo de las hojas (ej. 'r0', 'r1', ...)
 PREFIJO_HOJAS = "r"
 # Número de hojas de ranking (de r0 a r38 son 39 hojas) #toda la liga hay que poner 39
-NUM_HOJAS = 38 #38 si es solo hasta jornada 37
+NUM_HOJAS = 39 #39 jornada completa
 
 
 # --- Función para cargar los datos (con caché para optimizar el rendimiento) ---
@@ -217,7 +217,7 @@ def cargar_partidos(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
     return todos_los_partidos
 
 
-resultados_encuentros = cargar_partidos(NOMBRE_ARCHIVO_PARTIDOS, 'Jornada', 37)  ################# 38 temporada completa
+resultados_encuentros = cargar_partidos(NOMBRE_ARCHIVO_PARTIDOS, 'Jornada', 38)  ################# 38 temporada completa
 
 
 #resultados_encuentros['Jornada1']  #resultados de la jornada 1: debo borrar columnas y renombrar
@@ -225,7 +225,7 @@ resultados_encuentros = cargar_partidos(NOMBRE_ARCHIVO_PARTIDOS, 'Jornada', 37) 
 
 
 #cargo clasificacion general pedroche
-rankings_gen_pedroche_carg = cargar_partidos(Nombre_archivo_General_Pedroche, 'J', 37) ################# 38 temporada completa
+rankings_gen_pedroche_carg = cargar_partidos(Nombre_archivo_General_Pedroche, 'J', 38) ################# 38 temporada completa
 
 #cargo partidos
 def cargar_laliga(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
@@ -287,8 +287,8 @@ def cargar_laliga(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 
 
 #cargo clasificacion general LALIGA
-rankings_gen_LALIGA = cargar_laliga(Nombre_archivo_GenLALIGA,'J', 37)  #NO los lee bien,,   38 jornada completa
-#lo que está corrompido es el fichero EXCEL!!!!!!!!
+rankings_gen_LALIGA = cargar_laliga(Nombre_archivo_GenLALIGA,'J', 38)  #N38 jornada completa
+
 
 
 # Si los datos no se pudieron cargar, detener la ejecución del resto de la aplicación
