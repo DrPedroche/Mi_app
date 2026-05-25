@@ -24,10 +24,17 @@ st.markdown("### Método de F. Pedroche. IMM. <br> Universitat Politècnica de V
 #st.write("Selecciona una jornada.")
 
 with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Haz click para saber más del método"):
-        st.write("El método se basa en promocionar los goles en los partidos"
-                 "Por eso se favorecen las goleadas. Las reglas son muy simples"
-                 " El método permite asignar un 'campeón de la copa de la jornada' "
-                 "al equipo que ha vencido con mayor diferencia de goles. HOLA ")
+        st.write("El método de clasificación se basa en primar los goles en los partidos, favoreciendo las goleadas. "
+				 "Solo hay tres reglas muy simples que se aplican a los equipos que han vencido, empatado o perdido "
+				 "en los encuentros. El método designa como 'campeón de la jornada' al equipo que ha vencido por mayor "
+				 "diferencia de goles (DG). En caso de que haya dos equipos vencedores con la misma DG, se prioriza al"
+				 "que más goles haya marcado. En caso de empate en DG y G, se prioriza al equipo con mejor clasificación "
+				 "en la jornada anterior. A continuación, en la clasificación vienen los equipos que hayan empatado,"
+				 "ordenados según el número de goles en el encuentro. Por último, vienen los  equipos que han perdido,"
+				 "también ordenados según el número de goles del encuentro. En caso de empate en el orden, se mira"
+				 "a la clasificación de la jornada anterior y se prioriza al equipo con mejor orden".
+				)
+
 
 st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
