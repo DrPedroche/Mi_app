@@ -27,7 +27,7 @@ with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Ha
         st.write("El método se basa en promocionar los goles en los partidos"
                  "Por eso se favorecen las goleadas. Las reglas son muy simples"
                  " El método permite asignar un 'campeón de la copa de la jornada' "
-                 "al equipo que ha vencido con mayor diferencia de goles. ")
+                 "al equipo que ha vencido con mayor diferencia de goles. HOLA ")
 
 st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
@@ -115,8 +115,7 @@ def cargar_rankings(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 # --- Cargar los datos al inicio de la aplicación ---
 rankings_cargados = cargar_rankings(NOMBRE_ARCHIVO_EXCEL, PREFIJO_HOJAS, NUM_HOJAS)
 
-print('Hola')
-print('rankings meus carregats')
+
 
 # Cargamos las variables que usaremos como opcion seleccionable
 opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como en r0
@@ -151,12 +150,6 @@ with st.sidebar:
 
 
 
-# Using object notation
-# add_selectbox = st.sidebar.selectbox(
-#     "How would you like to be contacted?",
-#     ("Email", "Home phone", "Mobile phone")
-# )
-#print(add_selectbox)
 
 #cargo partidos
 def cargar_partidos(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
@@ -299,39 +292,12 @@ if rankings_cargados is None:
 # Crear una lista de opciones para el selectbox
 opciones_rankings = sorted(list(rankings_cargados.keys()))
 
-
-
-# if opciones_rankings:
-#     ranking_seleccionado = st.selectbox(
-#         "Elige una jornada: si pones r0 es la ultima del año pasado ",
-#         options=opciones_rankings,
-#         index=1 # Por defecto, selecciona el primer ranking de la lista
-#     )
-
-#     st.subheader(f"Resultados Jornada {ranking_seleccionado.replace('r', '')}")
-
-#     # Mostrar los equipos del ranking seleccionado
-#     equipos_mostrar = rankings_cargados[ranking_seleccionado]
-# else:
-#     st.warning("No se pudieron cargar rankings. Por favor, revisa tu archivo Excel y configuración.")
-
-
 ranking_seleccionado=number
-
-#intento pasar los rankings_cargados a dataframe
 dict_dataframes = {k: v.to_frame() for k, v in rankings_cargados.items()}
-
-
 
 #dict_dataframes['r0']  #jornada 0
 
-
-
-# # Definimos tus datos
-# df_1 = pd.DataFrame({'data1': [1, 2, 3, 4, 5]})
-# df_2 = pd.DataFrame({'data2': [20, 30, 40, 50, 60]})
-
-print(ranking_seleccionado)
+#print(ranking_seleccionado)
 entrada = ranking_seleccionado  #ejemplo r15
 #numero = entrada[1:]  # Extrae todo después del primer carácter ('15')
 numero = entrada  # 
@@ -402,7 +368,6 @@ def get_image_base64(path):
         return f"data:image/png;base64,{data}"
     return None
 
-# Supongamos que tu DF se llama df_clasificacion
 df_1['Escudo'] = df_1['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
 df_1['Club']=range(1,21)  #sale de 1 a 20
 
@@ -410,14 +375,6 @@ df_1['Club']=range(1,21)  #sale de 1 a 20
 df_gen_pedroche['Escudo']=df_gen_pedroche['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
 df_gen_pedroche['Club']=range(1,21)  #sale de 1 a 20
 
-
-
-
-
-#Tengo que cambiar la columna Equipo y poner los nombres como en los logos
-
-
-# Supongamos que tu dataframe se llama df
 dict_cambios = {
     'FC Barcelona': 'Barcelona',
     'Atlético de Madrid': 'Atlético',
@@ -451,20 +408,11 @@ dict_cambios = {
 df_LALIGA_select['Equipo'] = df_LALIGA_select['Equipo'].replace(dict_cambios)
 df_LALIGA_select['Escudo']=df_LALIGA_select['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
 
-texto = df_LALIGA_select.loc[10, 'Equipo']  #Real Madrid
-#texto = df_LALIGA_select.loc[17, 'Equipo'] #'CD Leganés\xa0', 
-texto = df_LALIGA_select.loc[5, 'Equipo']  #'Real Valladolid\xa0'
-texto = df_LALIGA_select.loc[21, 'Equipo']  # 'Espanyol\xa0'
-print("Texto exacto:", repr(texto))
-print("Longitud:", len(texto))
-
-
 #Reordeno
 df_1=df_1[['Club','Escudo','Equipo']]
 df_1 = df_1.assign(Ptos=[25, 18, 15, 12, 10, 8, 6, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 df_gen_pedroche=df_gen_pedroche[['Club','Escudo','Equipo','Ptos']]
 df_LALIGA_select=df_LALIGA_select[['Posición','Escudo','Equipo','PJ','Ptos']]
-
 
 # Creamos dos columnas de igual tamaño
 #col1, col2 = st.columns(2)
