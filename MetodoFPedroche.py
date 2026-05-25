@@ -414,15 +414,7 @@ with col2:
 ###### Analisi de un equipo
 
 st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="",width=80)
-
-col1, col2 = st.columns([2,1])
-
-with col1:
-    st.write(f"Posiciones del {parVariable} según el método")
-
-with col2:
-    st.image(f"escudos/{parVariable}.png", width=120)
+st.image(f"escudos/{parVariable}.png", caption="",width=90)
 
         
 #**********************
@@ -457,3 +449,32 @@ for i in range(1, 39):
 
 # Create the scatter plot
 import matplotlib.pyplot as plt
+# 1. Crear el objeto figura y los ejes
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# 2. Dibujar usando 'ax' en lugar de 'plt' (recomendado en Streamlit)
+ax.scatter(sheet_names, real_madrid_positions, marker='o', s=100)
+ax.plot(sheet_names, real_madrid_positions, linestyle='--', color='gray', alpha=0.7)
+
+# --- EJE X: Etiquetas del 1 al 38 ---
+ax.set_xticks(range(len(sheet_names)))
+labels_jornadas = [str(i) for i in range(1, 39)]
+ax.set_xticklabels(labels_jornadas[:len(sheet_names)])
+
+ax.set_xlabel('Jornada')
+ax.set_ylabel('Posición')
+ax.set_title(f"Evolución de las posiciones del equipo {parVariable} a lo largo de las clasificaciones parciales según el método")
+
+ax.set_ylim(20, 0) # El primer valor es el de abajo, el segundo el de arriba
+ax.set_yticks([0,1, 2,3, 5, 10, 15, 20])
+
+# Rotar las etiquetas del eje X
+plt.setp(ax.get_xticklabels(), rotation=90)
+
+ax.grid(True, linestyle='--', alpha=0.6)
+#ax.invert_yaxis()  # Invertir el eje Y (el 1 arriba)
+
+plt.tight_layout()
+
+# 3. Mostrar el gráfico en la app de Streamlit
+st.pyplot(fig)
