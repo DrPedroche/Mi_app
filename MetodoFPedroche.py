@@ -103,9 +103,6 @@ number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value
 #st.write("The current number is ", number)
 
 with st.sidebar:
-    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada),  #con esa parvariable puedo hacer algo en el futuro
-
-with st.sidebar:
     st.markdown(
         """
         ### 📰 Noticias sobre el método en prensa
@@ -121,8 +118,6 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-
-
 
 
 #cargo partidos
