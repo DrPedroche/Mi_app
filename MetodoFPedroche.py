@@ -463,7 +463,7 @@ ax.set_xticklabels(labels_jornadas[:len(sheet_names)])
 
 ax.set_xlabel('Jornada')
 ax.set_ylabel('Posición')
-ax.set_title(f"Evolución de las posiciones del equipo {parVariable} a lo largo de las clasificaciones parciales según el método")
+#ax.set_title(f"Evolución de las posiciones del equipo {parVariable} a lo largo de las clasificaciones parciales según el método")
 
 ax.set_ylim(20, 0) # El primer valor es el de abajo, el segundo el de arriba
 ax.set_yticks([0,1, 2,3, 5, 10, 15, 20])
@@ -474,14 +474,11 @@ plt.setp(ax.get_xticklabels(), rotation=90)
 ax.grid(True, linestyle='--', alpha=0.6)
 #ax.invert_yaxis()  # Invertir el eje Y (el 1 arriba)
 
-#Rotulo EQUIPO A ANALIZAR
-st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="",width=90)
 plt.tight_layout()
 
 #PALMARES
 Palmares = df_1[['Equipo']].copy()
-print(Palmares.head())
+
 
 # Initialize a dictionary to store counts of 'Posición' 1 for each team
 primero_counts = {team: 0 for team in Palmares['Equipo'].unique()}
@@ -579,5 +576,8 @@ with col_centro:
         )   
 
 # 3. Mostrar el gráfico en la app de Streamlit
+#Rotulo EQUIPO A ANALIZAR
+st.subheader(f"Posiciones del {parVariable} según el método") 
+st.image(f"escudos/{parVariable}.png", caption="",width=90)
 st.pyplot(fig)
 
