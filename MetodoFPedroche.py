@@ -27,7 +27,7 @@ st.sidebar.title('Selecciona Temporada')
 temporada_elegida=st.sidebar.radio('',['2024-25','2025-26'])
 
 st.subheader(f"Temporada {temporada_elegida}")
-#st.subheader("Pongo ficheros")
+
 
 if temporada_elegida=='2024-25':
 #     st.subheader("Has elegido la Temporada pasada")    
@@ -104,11 +104,8 @@ opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como e
 opciones_ordenada = opciones.sort_values() #los pongo en orden alfabetico
 
 
-with st.sidebar:
-    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
 
-st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="")
+
 
 #st.markdown(f"Clasificaciones del {parVariable}: ![Escudo](escudos/{parVariable}.png)")
 
@@ -116,6 +113,10 @@ st.image(f"escudos/{parVariable}.png", caption="")
 
 number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value=38, value="min", step=1,)
 #st.write("The current number is ", number)
+
+
+with st.sidebar:
+    parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
 
 with st.sidebar:
     st.markdown(
@@ -407,6 +408,14 @@ with col2:
             },
             hide_index=True
         )
-        
+
+
+
+###### Analisi de un equipo
+
+st.subheader(f"Posiciones del {parVariable} según el método") 
+st.image(f"escudos/{parVariable}.png", caption="")
+
+
         
 #**********************
