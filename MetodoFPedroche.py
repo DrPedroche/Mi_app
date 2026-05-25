@@ -116,7 +116,7 @@ with col1:
     st.write(f"Clasificaciones del {parVariable}")
 
 with col2:
-    st.image(f"escudos/{parvariable}.png")
+    st.image(f"escudos/{parVariable}.png")
 
 
 
