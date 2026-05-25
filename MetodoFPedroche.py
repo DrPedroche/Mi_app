@@ -110,13 +110,7 @@ with st.sidebar:
 #st.subheader(f"{parVariable}") 
 #st.image(f"escudos/{parVariable}.png", caption="Escudo")
 
-col1, col2 = st.columns([2,1])
-
-with col1:
-    st.write(f"Clasificaciones del {parVariable}")
-
-with col2:
-    st.image(f"escudos/{parVariable}.png")
+st.markdown(f"Clasificaciones del {parVariable}: ![Escudo](escudos/{parvariable}.png)")
 
 
 
