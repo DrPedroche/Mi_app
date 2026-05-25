@@ -414,8 +414,7 @@ with col2:
 ###### Analisi de un equipo
 file_in=NOMBRE_ARCHIVO_EXCEL
 
-st.subheader(f"Posiciones del {parVariable} según el método") 
-st.image(f"escudos/{parVariable}.png", caption="",width=90)
+
 
         
 #**********************
@@ -597,3 +596,7 @@ with col_centro:
 
 # 3. Mostrar el gráfico en la app de Streamlit
 st.pyplot(fig)
+
+#Rotulo EQUIPO A ANALIZAR
+st.subheader(f"Posiciones del {parVariable} según el método") 
+st.image(f"escudos/{parVariable}.png", caption="",width=90)
