@@ -412,6 +412,7 @@ with col2:
 
 
 ###### Analisi de un equipo
+file_in=NOMBRE_ARCHIVO_EXCEL
 
 st.subheader(f"Posiciones del {parVariable} según el método") 
 st.image(f"escudos/{parVariable}.png", caption="",width=90)
