@@ -132,9 +132,7 @@ with st.sidebar:
     - 🔵 [SER](https://cadenaser.com/comunitat-valenciana/2023/08/10/un-estudio-concluye-que-el-sistema-de-clasificacion-de-laliga-no-es-atractivo-y-perjudica-la-competitividad-entre-equipos-radio-valencia/)
     - 🔴 [UPV](https://www.upv.es/noticias-upv/noticia-14776-competitividad-es.html)
 
-        ### 📘 Publicación científica
 
-        - 📄 [Pedroche, F. (2025). *A New Proposal for Team Ranking in First Division of Spanish Football League*](https://doi.org/10.1007/978-3-032-00567-0_3)
         """,
         unsafe_allow_html=True
     )
