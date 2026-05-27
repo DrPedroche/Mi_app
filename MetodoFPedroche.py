@@ -148,7 +148,7 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-    )
+    
 with st.sidebar:
     st.subheader("Contacto: pedroche@upv.es")
 
