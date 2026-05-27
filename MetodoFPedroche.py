@@ -525,7 +525,7 @@ Palmares['Tercero'] = Palmares['Equipo'].map(tercero_counts).fillna(0).astype(in
 print(Palmares.head())        
         
 
-st.text_area('',"Palmarés: número de veces que cada equipo ha sido 1º, 2º o 3º en la clasificación parcial de cada jornada según el método")
+st.text_area('',"Palmarés: número de veces que cada equipo ha sido 1º, 2º, o 3º en la clasificación parcial de cada jornada según el método")
 
 
 col_izq, col_centro, col_der = st.columns([1, 2, 1])
