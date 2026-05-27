@@ -44,7 +44,7 @@ else:
     NOMBRE_ARCHIVO_EXCEL = "ranking-old-25-26.xlsx"
     NOMBRE_ARCHIVO_PARTIDOS = "LFP-25-26.xlsx"
     Nombre_archivo_General_Pedroche="CGeneral25-26.xlsx"
-    Nombre_archivo_GenLALIGA="Laliga25-26-transfmkt.xlsx"
+    Nombre_archivo_GenLALIGA="Laliga25-26.xlsx"
 
 
 
