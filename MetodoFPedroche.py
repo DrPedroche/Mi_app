@@ -106,16 +106,7 @@ opciones = rankings_cargados['r0']   #para coger el nombre de los equipos como e
 opciones_ordenada = opciones.sort_values() #los pongo en orden alfabetico
 
 
-
-
-
-#st.markdown(f"Clasificaciones del {parVariable}: ![Escudo](escudos/{parVariable}.png)")
-
-
-
 number = st.sidebar.number_input("Selecciona una jornada",min_value=1, max_value=38, value="min", step=1,)
-#st.write("The current number is ", number)
-
 
 with st.sidebar:
     parVariable=st.selectbox('Equipo a estudiar',options=opciones_ordenada)  #con esa parvariable puedo hacer algo en el futuro
@@ -183,12 +174,7 @@ def cargar_partidos(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 
 resultados_encuentros = cargar_partidos(NOMBRE_ARCHIVO_PARTIDOS, 'Jornada', 38)  ################# 38 temporada completa
 
-
-#resultados_encuentros['Jornada1']  #resultados de la jornada 1: debo borrar columnas y renombrar
-
-
-
-#cargo clasificacion general pedroche
+#cargo clasificacion general método F.Pedroche
 rankings_gen_pedroche_carg = cargar_partidos(Nombre_archivo_General_Pedroche, 'J', 38) ################# 38 temporada completa
 
 #cargo partidos
@@ -225,9 +211,7 @@ def cargar_laliga(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 #cargo clasificacion general LALIGA
 rankings_gen_LALIGA = cargar_laliga(Nombre_archivo_GenLALIGA,'J', 38)  #N38 jornada completa
 
-
-
-# Si los datos no se pudieron cargar, detener la ejecución del resto de la aplicación
+# 
 if rankings_cargados is None:
     st.stop()
 
@@ -259,27 +243,14 @@ print(jornada_cgeneral)  # Salida: J1
 print(jornada_cLALIGA) #Salida Jornada 1
 
 df_resultados = resultados_encuentros[jornada_resultado] 
-
 df_gen_pedroche = rankings_gen_pedroche_carg[jornada_cgeneral] 
-
 df_gen_pedroche.columns=['Equipo','Ptos']
-
-
 df_LALIGA=rankings_gen_LALIGA[jornada_cLALIGA]
-
-#rankings_gen_LALIGA['J10'] #
-#df_LALIGA.iloc[2:,:]
-
-
 df_LALIGA_select=df_LALIGA.iloc[2:,:]
 df_LALIGA_select.columns=['Posición','Logo','Equipo','PJ','Win','Draw','Lost','Goals','DG','Ptos']
 df_LALIGA_select['Posición']=range(1,21)
 df_LALIGA_select.info()
 df_LALIGA_select = df_LALIGA_select.rename(columns={'Pts': 'Ptos'})
-#print(df_resultados)
-
-#st.subheader("Linea 356")
-
 df_resultados.columns = ['ID', 'Local', 'Goles L', 'Visitante','Goles V']
 
 
@@ -288,7 +259,7 @@ df_1 = dict_dataframes['r'+str(ranking_seleccionado)]
 df_1.columns = ['Equipo']
 
 
-#hay que añadir escudo
+#añadir escudo
 def get_image_base64(path):
     if os.path.exists(path):
         with open(path, "rb") as f:
@@ -336,7 +307,7 @@ dict_cambios = {
 df_LALIGA_select['Equipo'] = df_LALIGA_select['Equipo'].replace(dict_cambios)
 df_LALIGA_select['Escudo']=df_LALIGA_select['Equipo'].apply(lambda x: get_image_base64(f"escudos/{x}.png"))
 
-#Reordeno
+#Reordenamos
 df_1=df_1[['Club','Escudo','Equipo']]
 df_1 = df_1.assign(Ptos=[25, 18, 15, 12, 10, 8, 6, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 df_gen_pedroche=df_gen_pedroche[['Club','Escudo','Equipo','Ptos']]
@@ -373,25 +344,12 @@ with col2:
         )
 
 
-
-#[25, 18, 15, 12, 10, 8, 6, 4, 2, 1]
-# left, right = st.columns(2, border=True)
-
-# left.markdown("El campeón de la jornada se lleva 25 puntos, los siguientes: 18, 15, 12, 10, 8, 6, 4, 2 y el décimo 1 punto. El resto de equipos no gana nada. ")
-# #middle.markdown("Lorem ipsum " * 5)
-# right.markdown("Acumulando los puntos podemos construir una clasificación general y compararla con la clasificación oficial")
-
 md = st.text_area('',"El campeón de la jornada se lleva 25 puntos, los siguientes: 18, 15, 12, 10, 8, 6, 4, 2 y el décimo 1 punto. "
                   "El resto de equipos no anotan puntos."
                   " Acumulando los puntos en cada jornada se puede construir una clasificación general" 
                   "  que puede compararse con la clasificación oficial")
 
-# print(df_1)
-
-# Creamos dos columnas de igual tamaño
-#col1, col2 = st.columns(2)
 col1, col2 = st.columns([0.45, 0.55])
-
 # Columna de la izquierda
 with col1:
     with st.container(border=True):
@@ -424,12 +382,9 @@ with col2:
 
 
 
-###### Analisi de un equipo
+###### Analisis de un equipo
 file_in=NOMBRE_ARCHIVO_EXCEL
 
-
-
-        
 #**********************
 
 #Initialize lists to store data for plotting
