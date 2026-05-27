@@ -140,6 +140,9 @@ with st.sidebar:
     )
 
 
+#with st.sidebar:
+#    st.markdown(
+
 #cargo partidos
 def cargar_partidos(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 
