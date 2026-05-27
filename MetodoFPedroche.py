@@ -143,8 +143,9 @@ with st.sidebar:
 with st.sidebar:
     st.markdown(
         """
-    ### 📘 Publicación científica
-        -📄[Pedroche, F. (2025). *A New Proposal for Team Ranking in First Division of Spanish Football League*](https://doi.org/10.1007/978-3-032-00567-0_3)
+        ### 📘 Publicación científica
+
+        - 📄 [Pedroche, F. (2025). *A New Proposal for Team Ranking in First Division of Spanish Football League*](https://doi.org/10.1007/978-3-032-00567-0_3)
         """,
         unsafe_allow_html=True
     )
