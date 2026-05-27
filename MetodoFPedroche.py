@@ -19,7 +19,9 @@ with st.expander("Selecciona temporada y jornada en el menú de la izquierda. Ha
 				 "que más goles haya marcado. En caso de empate en DG y G, se prioriza al equipo con mejor clasificación "
 				 "en la jornada anterior. A continuación, en la clasificación vienen los equipos que hayan empatado, "
 				 "ordenados según el número de goles en el encuentro. Por último, vienen los  equipos que han perdido, "
-				 "también ordenados según el número de goles del encuentro. En caso de empate en el orden, se mira "
+				 "ordenados en sentido inverso a la DG (es preferible perder por 2-0 que por 3-0) y en caso de igual DG"
+				 " se prima el número de goles del encuentro (es preferible perder por 3-1 que por 2-0)."
+				 " En caso de empate en el orden, se mira "
 				 "a la clasificación de la jornada anterior y se prioriza al equipo con mejor orden.")
 
 
