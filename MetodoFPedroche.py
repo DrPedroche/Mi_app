@@ -37,7 +37,7 @@ if temporada_elegida=='2024-25':
     NOMBRE_ARCHIVO_EXCEL = "ranking-old-24-25.xlsx"
     NOMBRE_ARCHIVO_PARTIDOS = "LFP-24-25.xlsx"
     Nombre_archivo_General_Pedroche="CGeneral24-25.xlsx"
-    Nombre_archivo_GenLALIGA="Laliga24-25-transfmkt.xlsx"
+    Nombre_archivo_GenLALIGA="Laliga24-25.xlsx"
 
 else:
 #     st.subheader("Has elegido la Temporada actual")      
