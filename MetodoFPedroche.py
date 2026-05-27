@@ -143,6 +143,9 @@ with st.sidebar:
 #with st.sidebar:
 #    st.markdown(
 
+
+st.subheader("Contacto: pedroche@upv.es")
+
 #cargo partidos
 def cargar_partidos(archivo_excel: str, prefijo: str, num_hojas: int) -> dict:
 
