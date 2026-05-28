@@ -1,4 +1,4 @@
-# Mi_app
+# MetodoFPedroche
 Clasificación alternativa a la liga de Fútbol de 1ª división masculina. </br>
 Resultados del método de F. Pedroche. IMM. UPV.</br>
 (Temporadas 24-25 y 25-26) #LALIGA #LFP  #Soccer #Football #Ranking
